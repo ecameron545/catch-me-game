@@ -1,19 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<head>
 <style>
 .element {
 	height: 50px;
   	width: 50px;
     background-color: lime;
-    border-radius: 50%;
 }
-.element2{
+
+.enemyElement1{
 	height: 100px;
   	width: 100px;
   	margin-top: 100px;
     background-color: hotpink;
-    border-radius: 50%;
+}
+.enemyElement2{
+	height: 100px;
+  	width: 100px;
+  	margin-top: 100px;
+    background-color: hotpink;
+}
+.enemyElement3{
+	height: 100px;
+  	width: 100px;
+  	margin-top: 100px;
+    background-color: hotpink;
+}
+.enemyElement4{
+	top: 500px;
+	left: 1000px;
+	height: 100px;
+  	width: 100px;
+  	margin-top: 100px;
+    background-color: hotpink;
+}
+.enemyElement5{
+	top: 900px;
+	left: 100px;
+	height: 100px;
+  	width: 100px;
+  	margin-top: 100px;
+    background-color: hotpink;
+}
+.enemyElement6{
+	left: 100px;
+	height: 100px;
+  	width: 100px;
+  	margin-top: 100px;
+    background-color: hotpink;
+}
+.enemyElement7{
+	top: 200px;
+	left: 1000px;
+	height: 100px;
+  	width: 100px;
+  	margin-top: 100px;
+    background-color: hotpink;
+}
+.enemyElement8{
+	height: 100px;
+  	width: 100px;
+  	margin-top: 100px;
+    background-color: hotpink;
+}
+.enemyElement9{
+	height: 100px;
+  	width: 100px;
+  	margin-top: 100px;
+    background-color: hotpink;
 }
 #oc {
  	position: fixed;
@@ -24,7 +81,14 @@
   	overflow: auto;
     border: 1px solid black;
     background-color: black;
-   
+}
+button {
+  margin-top: 10px;
+  line-height: 21px;
+  font-weight: bold;
+  padding: 0 40px;
+  background: lightgray;
+  border: 1 px solid black;
 }
 
 </style>
@@ -34,47 +98,157 @@
 
 <script src="js/anime.min.js"> </script>
 
-<div id = "oc" onmousemove="mouseClick(event)"> 
-	<div class="element2"></div>
-	<div class="element"></div> 	 	
-</div>
 
+<div id = "end">
+<div id = "oc"  >
+
+	<div class="enemyElement1" ondragover="gameOver(event)"> 
+		<div class="enemyElement5" ondragover="gameOver(event)"> </div>	
+	
+	<div class="enemyElement4" ondragover="gameOver(event)"> </div>
+	<div class="enemyElement6" ondragover="gameOver(event)"> 
+	<div class="enemyElement7" ondragover="gameOver(event)"> </div>
+	</div>	
+	</div>
+	
+	<div class="enemyElement5" ondragover="gameOver(event)"> </div>	
+	
+	<div class="enemyElement2" ondragover="gameOver(event)"> 
+	<div class="enemyElement3" ondragover="gameOver(event)"> 
+	
+	</div>
+	<div class="enemyElement8" ondragover="gameOver(event)"> </div>	
+	
+	</div>
+	
+	
+	<div class="element" draggable="true" ondrag="drag(event)" ondragend="dragEnd(event)"></div> 
+	
+	
+
+</div>
+<div id="scoreBoard"></div>
+</div>
 <p id="demo"></p>
 
 
 <script>
+var score = 0;
+
 	var cssSelector = anime({
-    	targets: '.element2',
-    		translateX: 1350,
-    		translateY: 650,    		
-    		duration: 4000,
+    	targets: '.enemyElement1',
+    		translateX: 500,
+    		duration: 600,
     		loop: true,
     		direction: 'alternate',
     		easing: 'linear'
     		
-
     });
-	</script>
+	
+	var cssSelector = anime({
+    	targets: '.enemyElement2',
+    		translateX: 200,
+    		translateY: 200,    		
+    		duration: 500,
+    		loop: true,
+    		direction: 'alternate',
+    		easing: 'linear'
+    		
+    });
+	
+	var cssSelector = anime({
+    	targets: '.enemyElement3',
+    		translateX: 1000,
+    		duration: 2000,
+    		loop: true,
+    		direction: 'alternate',
+    		easing: 'linear'
+    		
+    });
+	
+	var cssSelector = anime({
+    	targets: '.enemyElement4',
+    		translateX: 1200,
+    		translateY: 300,
+    		duration: 1000,
+    		loop: true,
+    		direction: 'alternate',
+    		easing: 'linear'
+    		
+    });
+	var cssSelector = anime({
+    	targets: '.enemyElement5',
+    		translateX: 800,
+    		translateY: 400,
+    		duration: 2000,
+    		loop: true,
+    		direction: 'alternate',
+    		easing: 'linear'
+    		
+    });
+	var cssSelector = anime({
+    	targets: '.enemyElement6',
+    		translateX: 500,
+    		translateY: 250,
+    		duration: 800,
+    		loop: true,
+    		direction: 'alternate',
+    		easing: 'linear'
+    		
+    });
+	var cssSelector = anime({
+    	targets: '.enemyElement7',
+    		translateY: -500,
+    		duration: 1000,
+    		loop: true,
+    		direction: 'alternate',
+    		easing: 'linear'
+    		
+    });
+	var cssSelector = anime({
+    	targets: '.enemyElement8',
+    		translateX: 1050,
+    		translateY: -400,
+    		duration: 1200,
+    		loop: true,
+    		direction: 'alternate',
+    		easing: 'linear'
+    		
+    });
+	
+	
 
-<script>
-function mouseClick(e) {
-    var x = e.clientX;
-    var y = e.clientY;
-    
-    if(x <= 1415 && y <= 820 && x >= 30 && y >= 30){
-    	var toTranslateX = x - 25
-   		var toTranslateY = y - 225;
-   
-	    var cssSelector = anime({
-	    	targets: '.element',
-	    		translateX: toTranslateX,
-	    		translateY: toTranslateY,
-	    			borderRadius: '100%',
-	    			easing: 'easeOutQuart'
-	    			
-	    });
+	// counter for when you are alive
+	setInterval(function(){ 
+		score++; 
+		}, 1000);
+	
+	function dragEnd(event){
+		var x = document.querySelector(".element");
+		x.style.visibility = "visible";
 	}
-}
+	
+	// causes original character element to disappear when dragging it
+	function drag(event){
+		var x = document.querySelector(".element");
+		x.style.visibility = "hidden";
+		
+	}
+	
+	// you hit an enemy so end the game and create a "play again" button
+	function gameOver(event){
+		document.getElementById("end").innerHTML = "Game Over. Your time was " + score + " seconds.     ";
+		var button = document.createElement("button");
+		button.innerHTML = "Play Again?";
+		
+		// adds the button to the end element
+		var body = document.getElementById("end");
+		body.appendChild(button);
+
+		button.addEventListener ("click", function() {
+			window.location.reload();
+		});
+	}
 </script>
-</body>
+</body>	
 </html>
